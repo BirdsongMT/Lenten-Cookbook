@@ -20,5 +20,5 @@
 
 # Test link only (dev branch): swap in the orange "TEST" icons and name
 # so it's easy to tell apart from the live app. Production is untouched.
-[context.branch-deploy]
+[context.dev]
   command = "cp icons/test/*.png icons/ && sed -i 's/\"short_name\": \"Lenten Cookbook\"/\"short_name\": \"Cookbook TEST\"/; s/\"name\": \"My Lenten Pocket Cookbook\"/\"name\": \"Lenten Cookbook (TEST)\"/' manifest.webmanifest && sed -i 's/content=\"Lenten Cookbook\"/content=\"Cookbook TEST\"/' index.html"
