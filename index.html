@@ -6,13 +6,24 @@
   <title>🕊 My Lenten Pocket Cookbook</title>
   <meta name="theme-color" content="#3A1B58">
   <meta name="description" content="Fasting-friendly recipes for Great Lent.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" id="lnkManifest" href="manifest.webmanifest">
+  <link rel="icon" id="lnkIcon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" id="lnkApple" href="icons/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Lenten Cookbook">
+  <meta name="apple-mobile-web-app-title" id="metaAppTitle" content="Lenten Cookbook">
+  <script>
+    // Test link (dev--…netlify.app): orange TEST icon and name, so it's easy to tell apart.
+    window.IS_TEST = /^dev--/.test(location.hostname);
+    if (window.IS_TEST) {
+      document.getElementById('lnkManifest').href = 'manifest-test.webmanifest';
+      document.getElementById('lnkIcon').href = 'icons/test/icon-192.png';
+      document.getElementById('lnkApple').href = 'icons/test/apple-touch-icon.png';
+      document.getElementById('metaAppTitle').content = 'Cookbook TEST';
+      document.title = 'TEST · ' + document.title;
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">

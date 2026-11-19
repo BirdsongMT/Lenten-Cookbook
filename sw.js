@@ -2,14 +2,17 @@
 // Pages: try the network first so updates show up right away,
 // fall back to the saved copy when there's no signal.
 // Icons and fonts: use the saved copy first (they rarely change).
-const CACHE = 'lenten-cookbook-v3';
+const CACHE = 'lenten-cookbook-v4';
 const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
-  './icons/apple-touch-icon.png'
+  './icons/apple-touch-icon.png',
+  './manifest-test.webmanifest',
+  './icons/test/icon-192.png',
+  './icons/test/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', e => {
