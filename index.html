@@ -104,60 +104,56 @@
     .empty-emoji{font-size:3rem;display:block;margin-bottom:12px;}
 
     /* ── MODAL */
-    .overlay{position:fixed;inset:0;background:rgba(26,15,7,0.55);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s ease;backdrop-filter:blur(3px);}
-    .overlay.open{opacity:1;pointer-events:all;}
-    .sheet{position:fixed;left:0;right:0;bottom:0;max-height:93vh;background:var(--bg);border-radius:24px 24px 0 0;z-index:201;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);overflow:hidden;display:flex;flex-direction:column;}
-    .sheet.open{transform:translateY(0);}
-    .drag-handle{width:40px;height:4px;background:rgba(58,27,88,0.2);border-radius:100px;margin:12px auto 0;flex-shrink:0;}
-    .sheet-header{background:var(--purple);padding:18px 20px 22px;flex-shrink:0;position:relative;}
-    .sheet-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;}
-    .sheet-close:hover{background:rgba(255,255,255,0.25);}
-    .sheet-emoji{font-size:3.2rem;display:block;margin-bottom:7px;}
-    .sheet-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#F5EFE3;line-height:1.2;margin-bottom:11px;}
-    .sheet-badges{display:flex;gap:7px;flex-wrap:wrap;}
-    .sheet-badge{font-size:0.78rem;color:var(--gold-l);background:rgba(232,168,60,0.15);border:1px solid rgba(232,168,60,0.3);padding:3px 11px;border-radius:100px;font-style:italic;}
-    .sheet-body{overflow-y:auto;padding:22px 20px 32px;flex:1;-webkit-overflow-scrolling:touch;}
+    .sheet{position:fixed;inset:0;background:var(--bg);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),visibility 0s linear 0.3s;}
+    .sheet.open{transform:none;visibility:visible;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),visibility 0s;}
+    .sheet-header{background:var(--purple);padding:calc(6px + env(safe-area-inset-top,0px)) 12px 9px;flex-shrink:0;box-shadow:0 2px 10px rgba(0,0,0,0.2);}
+    .sh-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+    .sh-btn{min-width:36px;height:36px;padding:0 11px;border:none;border-radius:18px;background:rgba(255,255,255,0.13);color:#F5EFE3;font-family:'Crimson Pro',serif;font-size:1rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    .sh-btn:disabled{opacity:0.3;cursor:default;}
+    .sh-nav{display:flex;align-items:center;gap:6px;}
+    .sh-counter{min-width:54px;text-align:center;font-size:0.85rem;font-style:italic;color:rgba(245,239,227,0.75);}
+    .sh-title-row{display:flex;align-items:center;gap:8px;margin-top:6px;}
+    .sheet-emoji{font-size:1.5rem;line-height:1;flex-shrink:0;}
+    .sheet-title{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:#F5EFE3;line-height:1.2;}
+    .sheet-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
+    .sheet-badge{font-size:0.72rem;color:var(--gold-l);background:rgba(232,168,60,0.15);border:1px solid rgba(232,168,60,0.3);padding:1px 8px;border-radius:100px;font-style:italic;}
+    .sheet-body{overflow-y:auto;padding:12px 16px calc(24px + env(safe-area-inset-bottom,0px));flex:1;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
 
     /* ── SPECIAL BADGE IN BODY */
-    .special-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-l));color:white;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:8px;margin-bottom:18px;letter-spacing:0.03em;}
+    .special-badge{background:linear-gradient(135deg,var(--gold),var(--gold-l));color:white;font-size:0.78rem;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:10px;letter-spacing:0.03em;width:fit-content;display:block;}
 
     /* ── WARNING BOX */
-    .warn-box{background:rgba(181,82,42,0.08);border-left:3px solid var(--terra);border-radius:0 10px 10px 0;padding:11px 14px;margin-bottom:16px;font-size:0.9rem;color:var(--terra);font-weight:600;line-height:1.4;}
+    .warn-box{background:rgba(181,82,42,0.08);border-left:3px solid var(--terra);border-radius:0 8px 8px 0;padding:7px 11px;margin-bottom:10px;font-size:0.88rem;color:var(--terra);font-weight:600;line-height:1.4;}
 
     /* ── FUN FACT BOX */
-    .fun-box{background:rgba(58,27,88,0.06);border-left:3px solid var(--purple-l);border-radius:0 10px 10px 0;padding:11px 14px;margin-bottom:16px;font-size:0.9rem;color:var(--purple);font-style:italic;line-height:1.4;}
+    .fun-box{background:rgba(58,27,88,0.06);border-left:3px solid var(--purple-l);border-radius:0 8px 8px 0;padding:7px 11px;margin-bottom:10px;font-size:0.88rem;color:var(--purple);font-style:italic;line-height:1.4;}
 
     /* ── SECTION HEADING */
-    .sec-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--purple);margin-bottom:13px;padding-bottom:6px;border-bottom:1.5px solid var(--border);}
+    .sec-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:4px;padding-bottom:4px;border-bottom:1.5px solid var(--border);}
 
     /* ── INGREDIENTS */
-    .ing-list{list-style:none;margin-bottom:26px;}
-    .ing-item{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s;}
+    .ing-list{list-style:none;margin-bottom:16px;}
+    .ing-item{display:flex;align-items:flex-start;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s;}
     .ing-item:last-child{border-bottom:none;}
-    .ing-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--purple-l);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.15s ease;background:transparent;}
+    .ing-check{width:20px;height:20px;border-radius:6px;border:2px solid var(--purple-l);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.15s ease;background:transparent;}
     .ing-item.checked .ing-check{background:var(--olive);border-color:var(--olive);}
     .ing-item.checked .ing-check::after{content:'✓';color:white;font-size:0.72rem;font-weight:700;}
-    .ing-text{font-size:0.98rem;line-height:1.45;transition:all 0.15s ease;}
+    .ing-text{font-size:0.97rem;line-height:1.35;transition:all 0.15s ease;}
     .ing-item.checked .ing-text{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(74,101,53,0.4);}
 
     /* ── STEPS */
-    .step-list{list-style:none;margin-bottom:26px;}
-    .step-item{display:flex;gap:13px;margin-bottom:15px;align-items:flex-start;}
-    .step-num{width:27px;height:27px;border-radius:50%;background:var(--purple);color:white;font-size:0.78rem;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:3px;font-family:'Playfair Display',serif;}
-    .step-text{font-size:0.98rem;line-height:1.6;}
+    .step-list{list-style:none;margin:8px 0 14px;}
+    .step-item{display:flex;gap:10px;margin-bottom:9px;align-items:flex-start;}
+    .step-num{width:24px;height:24px;border-radius:50%;background:var(--purple);color:white;font-size:0.78rem;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;font-family:'Playfair Display',serif;}
+    .step-text{font-size:0.97rem;line-height:1.45;}
     .step-lbl{font-weight:700;color:var(--purple);}
 
     /* ── TIP BOX */
-    .tip-box{background:linear-gradient(135deg,rgba(184,121,26,0.09),rgba(184,121,26,0.04));border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:15px 17px;margin-bottom:20px;}
-    .tip-label{font-family:'Playfair Display',serif;font-size:0.82rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.09em;margin-bottom:5px;}
-    .tip-text{font-size:0.95rem;color:var(--text);font-style:italic;line-height:1.6;}
+    .tip-box{background:linear-gradient(135deg,rgba(184,121,26,0.09),rgba(184,121,26,0.04));border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 12px;margin-bottom:14px;}
+    .tip-label{font-family:'Playfair Display',serif;font-size:0.78rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.09em;margin-bottom:2px;}
+    .tip-text{font-size:0.93rem;color:var(--text);font-style:italic;line-height:1.45;}
 
-    /* ── RECIPE NAV (swipe between recipes) */
-    .sheet-nav{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 4px;flex-shrink:0;background:var(--bg);border-bottom:1px solid var(--border);}
-    .sheet-nav-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--purple);background:transparent;color:var(--purple);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
-    .sheet-nav-btn:hover:not(:disabled){background:var(--purple);color:white;}
-    .sheet-nav-btn:disabled{opacity:0.25;cursor:default;border-color:var(--muted);color:var(--muted);}
-    .sheet-nav-counter{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--muted);font-style:italic;}
+    /* ── RECIPE SWIPE ANIMATION */
     .sheet-content-wrap{transition:opacity 0.18s ease, transform 0.18s ease;}
     .sheet-content-wrap.slide-left{opacity:0;transform:translateX(-30px);}
     .sheet-content-wrap.slide-right{opacity:0;transform:translateX(30px);}
@@ -181,7 +177,7 @@
     /* ── FASTING (OIL) */
     .fast-note{margin:0 16px 10px;padding:7px 12px;font-size:0.85rem;line-height:1.35;color:var(--olive);background:rgba(74,101,53,0.08);border-radius:10px;}
     .card-oil{font-size:0.72rem;font-weight:700;color:var(--olive);background:rgba(74,101,53,0.1);padding:2px 8px;border-radius:100px;}
-    .oil-box{background:rgba(74,101,53,0.08);border-left:3px solid var(--olive);border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:16px;font-size:0.9rem;color:var(--olive);line-height:1.4;}
+    .oil-box{background:rgba(74,101,53,0.08);border-left:3px solid var(--olive);border-radius:0 8px 8px 0;padding:7px 11px;margin-bottom:10px;font-size:0.88rem;color:var(--olive);line-height:1.4;}
     .oil-box b{font-weight:700;}
 
     /* Divider line */
@@ -197,19 +193,20 @@
 
 <main class="main" id="mainContent"></main>
 
-<div class="overlay" id="overlay" onclick="closeModal()"></div>
-<div class="sheet" id="sheet">
-  <div class="drag-handle"></div>
-  <div class="sheet-nav" id="sheetNav" style="display:none;">
-    <button class="sheet-nav-btn" id="navPrev" onclick="navigateRecipe(-1)" aria-label="Previous recipe">‹</button>
-    <span class="sheet-nav-counter" id="navCounter"></span>
-    <button class="sheet-nav-btn" id="navNext" onclick="navigateRecipe(1)" aria-label="Next recipe">›</button>
-  </div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sTitle">
   <div class="sheet-header">
-    <button class="sheet-close" onclick="closeModal()" aria-label="Close recipe">✕</button>
-    <span class="sheet-emoji" id="sEmoji"></span>
-    <h2 class="sheet-title" id="sTitle"></h2>
-    <div class="sheet-badges" id="sBadges"></div>
+    <div class="sh-bar">
+      <button class="sh-btn" onclick="closeModal()" aria-label="Back to recipes">‹ Recipes</button>
+      <div class="sh-nav" id="sheetNav">
+        <button class="sh-btn" id="navPrev" onclick="navigateRecipe(-1)" aria-label="Previous recipe">‹</button>
+        <span class="sh-counter" id="navCounter"></span>
+        <button class="sh-btn" id="navNext" onclick="navigateRecipe(1)" aria-label="Next recipe">›</button>
+      </div>
+    </div>
+    <div class="sh-info" id="sInfo">
+      <div class="sh-title-row"><span class="sheet-emoji" id="sEmoji"></span><h2 class="sheet-title" id="sTitle"></h2></div>
+      <div class="sheet-badges" id="sBadges"></div>
+    </div>
   </div>
   <div class="sheet-body" id="sBody"></div>
 </div>
@@ -680,7 +677,7 @@ function openRecipe(id) {
 
   let body = '';
 
-  if (r.specialBadge) body += `<div class="special-badge">✨ ${r.specialBadge}</div><br>`;
+  if (r.specialBadge) body += `<div class="special-badge">✨ ${r.specialBadge}</div>`;
   if (r.warning) body += `<div class="warn-box">⚠️ ${r.warning}</div>`;
   if (r.funFact) body += `<div class="fun-box">${r.funFact}</div>`;
 
@@ -738,10 +735,26 @@ function openRecipe(id) {
   // Scroll sheet to top
   document.getElementById('sBody').scrollTop = 0;
 
-  document.getElementById('overlay').classList.add('open');
-  document.getElementById('sheet').classList.add('open');
+  showSheet();
+}
+
+// ── FULL-PAGE RECIPE + PHONE BACK BUTTON ──
+// Opening a recipe adds a history step, so the phone's back button/gesture
+// returns to the list instead of leaving the app.
+let historyPushed = false;
+function showSheet() {
+  const sheet = document.getElementById('sheet');
+  if (!sheet.classList.contains('open')) {
+    try { history.pushState({ recipe: true }, ''); historyPushed = true; } catch (e) { historyPushed = false; }
+  }
+  sheet.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+function hideSheet() {
+  document.getElementById('sheet').classList.remove('open');
+  document.body.style.overflow = '';
+}
+window.addEventListener('popstate', () => { historyPushed = false; hideSheet(); });
 
 // ── TOGGLE INGREDIENT ─────────────────────
 function toggleIng(e, recipeId, idx) {
@@ -757,9 +770,9 @@ function toggleIng(e, recipeId, idx) {
 
 // ── CLOSE MODAL ───────────────────────────
 function closeModal() {
-  document.getElementById('overlay').classList.remove('open');
-  document.getElementById('sheet').classList.remove('open');
-  document.body.style.overflow = '';
+  if (!document.getElementById('sheet').classList.contains('open')) return;
+  if (historyPushed) history.back(); // popstate hides the page
+  else hideSheet();
 }
 
 // ── NAVIGATE BETWEEN RECIPES ──────────────
@@ -770,7 +783,7 @@ function navigateRecipe(direction) {
   navBusy = true;
 
   const sheet = document.getElementById('sheet');
-  const header = sheet.querySelector('.sheet-header');
+  const header = document.getElementById('sInfo');
   const body = document.getElementById('sBody');
 
   // Slide-out animation
@@ -799,19 +812,16 @@ function navigateRecipe(direction) {
 
 // ── SWIPE DETECTION ───────────────────────
 // Left/right anywhere on the sheet = prev/next recipe.
-// Down on the handle, nav bar or purple header = close.
 (function() {
   const sheet = document.getElementById('sheet');
   let touchStartX = 0;
   let touchStartY = 0;
   let isSwiping = false;
-  let fromTop = false;
 
   sheet.addEventListener('touchstart', function(e) {
     touchStartX = e.changedTouches[0].clientX;
     touchStartY = e.changedTouches[0].clientY;
     isSwiping = false;
-    fromTop = !!e.target.closest('.drag-handle, .sheet-nav, .sheet-header');
   }, { passive: true });
 
   sheet.addEventListener('touchmove', function(e) {
@@ -826,11 +836,7 @@ function navigateRecipe(direction) {
 
   sheet.addEventListener('touchend', function(e) {
     const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if (!isSwiping) {
-      if (fromTop && dy > 80 && Math.abs(dy) > Math.abs(dx) * 1.5) closeModal();
-      return;
-    }
+    if (!isSwiping) return;
     if (dx > 50) {
       navigateRecipe(-1); // swipe right = previous
     } else if (dx < -50) {

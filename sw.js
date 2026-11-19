@@ -2,7 +2,7 @@
 // Pages: try the network first so updates show up right away,
 // fall back to the saved copy when there's no signal.
 // Icons and fonts: use the saved copy first (they rarely change).
-const CACHE = 'lenten-cookbook-v4';
+const CACHE = 'lenten-cookbook-v5';
 const CORE = [
   './',
   './index.html',
